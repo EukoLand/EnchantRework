@@ -15,31 +15,25 @@ public class PluginConfig {
     private final double noEnchantMultiplier;
     private final double withEnchantMultiplier;
 
-    /**
-     * Режимы округления урона
-     */
     public enum RoundingMode {
-        /** Стандартное округление (0.5 и выше -> вверх) */
+        /** Standard rounding (0.5 and higher -> 1) */
         STANDARD,
 
-        /** Всегда округлять вниз */
+        /** Always round down */
         ALWAYS_DOWN,
 
-        /** Всегда округлять вверх */
+        /** Always round up */
         ALWAYS_UP
     }
 
-    /**
-     * Режимы обработки минимального урона
-     */
     public enum MinimumDamageMode {
-        /** Наносить 0 урона при уроне < 1.0 */
+        /** 0 Damage when < 1.0 */
         ZERO,
 
-        /** Наносить минимум 1.0 урона */
+        /** Minimum damage is 1.0 */
         MINIMUM,
 
-        /** Разрешить дробный урон < 1.0 */
+        /** Allow decimal damage */
         ALLOW_DECIMAL
     }
 }

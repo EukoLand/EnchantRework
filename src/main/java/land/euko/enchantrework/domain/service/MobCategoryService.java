@@ -5,12 +5,6 @@ import org.bukkit.entity.EntityType;
 
 public class MobCategoryService {
 
-    /**
-     * Определяет категорию моба по его типу
-     *
-     * @param entityType тип сущности Bukkit
-     * @return категория моба
-     */
     public MobCategory determineCategory(EntityType entityType) {
         if (MobCategory.ARTHROPOD.contains(entityType)) {
             return MobCategory.ARTHROPOD;

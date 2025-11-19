@@ -4,10 +4,6 @@ import land.euko.enchantrework.Main;
 import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 
-/**
- * Менеджер конфигурации плагина
- * Читает config.yml и предоставляет immutable объект конфига
- */
 public class ConfigManager {
 
     private final Main plugin;
@@ -38,7 +34,7 @@ public class ConfigManager {
             return PluginConfig.RoundingMode.valueOf(value.toUpperCase());
         } catch (IllegalArgumentException e) {
             plugin.getLogger().warning(
-                    "Неверный режим округления: " + value + ". Используется STANDARD."
+                    "Invalid rounding mode: " + value + ". Using STANDARD."
             );
             return PluginConfig.RoundingMode.STANDARD;
         }
@@ -49,7 +45,7 @@ public class ConfigManager {
             return PluginConfig.MinimumDamageMode.valueOf(value.toUpperCase());
         } catch (IllegalArgumentException e) {
             plugin.getLogger().warning(
-                    "Неверный режим минимального урона: " + value + ". Используется MINIMUM."
+                    "Invalid minimum damage mode: " + value + ". Using MINIMUM."
             );
             return PluginConfig.MinimumDamageMode.MINIMUM;
         }

@@ -10,9 +10,6 @@ import lombok.Getter;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- * Переработка механики зачарований Бич членистоногих и Небесная кара
- */
 public final class Main extends JavaPlugin {
 
     @Getter
@@ -26,40 +23,29 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Инициализация FoliaLib для совместимости с Folia
         foliaLib = new FoliaLib(this);
 
-        // Загрузка конфигурации
         saveDefaultConfig();
         configManager = new ConfigManager(this);
 
-        // Инициализация сервисов (Manual DI)
         mobCategoryService = new MobCategoryService();
         damageService = new DamageCalculationService(configManager);
 
-        // Регистрация слушателей
         registerListeners();
-
-        // Регистрация команд
         registerCommands();
 
-        getLogger().info("EnchantmentRework успешно запущен!");
-        getLogger().info("Поддержка Folia: " + foliaLib.isFolia());
+        getLogger().info("EnchantmentRework successfully enabled!");
+        getLogger().info("Folia server: " + foliaLib.isFolia());
     }
 
     @Override
     public void onDisable() {
-        // Отмена всех задач FoliaLib
         if (foliaLib != null) {
             foliaLib.getScheduler().cancelAllTasks();
         }
 
-        getLogger().info("EnchantmentRework выключен!");
+        getLogger().info("EnchantmentRework disabled!");
     }
-
-    /**
-     * Перезагрузка конфигурации плагина
-     */
 
     public void reloadPluginConfig() {
         reloadConfig();
@@ -70,7 +56,7 @@ public final class Main extends JavaPlugin {
         HandlerList.unregisterAll(this);
         registerListeners();
 
-        getLogger().info("Конфигурация перезагружена!");
+        getLogger().info("Configuration reloaded!");
     }
 
 

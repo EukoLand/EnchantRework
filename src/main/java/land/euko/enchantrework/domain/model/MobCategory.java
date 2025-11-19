@@ -11,9 +11,6 @@ import java.util.Set;
 @RequiredArgsConstructor
 public enum MobCategory {
 
-    /**
-     * Членистоногие мобы - уязвимы к Бичу членистоногих
-     */
     ARTHROPOD(EnumSet.of(
             EntityType.SPIDER,
             EntityType.CAVE_SPIDER,
@@ -22,9 +19,6 @@ public enum MobCategory {
             EntityType.ENDERMITE
     )),
 
-    /**
-     * Нежить - уязвима к Небесной каре
-     */
     UNDEAD(EnumSet.of(
             EntityType.ZOMBIE,
             EntityType.ZOMBIE_VILLAGER,
@@ -40,14 +34,14 @@ public enum MobCategory {
     )),
 
     /**
-     * Обычные мобы - без специальных модификаторов
+     * Mobs with no special category
      */
     NORMAL(EnumSet.noneOf(EntityType.class));
 
     private final Set<EntityType> entities;
 
     /**
-     * Проверяет, принадлежит ли тип сущности к данной категории
+     * Checks if the mob category contains the given entity type
      */
     public boolean contains(EntityType type) {
         return entities.contains(type);

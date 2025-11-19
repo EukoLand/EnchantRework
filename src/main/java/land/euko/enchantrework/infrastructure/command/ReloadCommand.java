@@ -22,23 +22,23 @@ public class ReloadCommand implements CommandExecutor {
     ) {
         // Проверка прав доступа
         if (!sender.hasPermission("enchantrework.reload")) {
-            sender.sendMessage(ChatColor.RED + "У вас нет прав для выполнения этой команды!");
+            sender.sendMessage(ChatColor.RED + "You don't have permission to execute this command!");
             return true;
         }
 
         // Если нет аргументов или неверный аргумент
         if (args.length == 0 || !args[0].equalsIgnoreCase("reload")) {
-            sender.sendMessage(ChatColor.YELLOW + "Использование: /enchantrework reload");
+            sender.sendMessage(ChatColor.YELLOW + "Usage: /enchantrework reload");
             return true;
         }
 
         // Перезагрузка конфигурации
         try {
             plugin.reloadPluginConfig();
-            sender.sendMessage(ChatColor.GREEN + "Конфигурация EnchantmentRework успешно перезагружена!");
+            sender.sendMessage(ChatColor.GREEN + "EnchantmentRework configuration successfully reloaded!");
         } catch (Exception e) {
-            sender.sendMessage(ChatColor.RED + "Ошибка при перезагрузке конфигурации!");
-            plugin.getLogger().severe("Ошибка при перезагрузке конфигурации: " + e.getMessage());
+            sender.sendMessage(ChatColor.RED + "Error while reloading configuration!");
+            plugin.getLogger().severe("Error while reloading configuration: " + e.getMessage());
             e.printStackTrace();
         }
 

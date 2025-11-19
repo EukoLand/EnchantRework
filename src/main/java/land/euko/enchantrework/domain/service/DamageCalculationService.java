@@ -11,32 +11,23 @@ public class DamageCalculationService {
     private final ConfigManager configManager;
 
     /**
-     * Вычисляет финальный урон с учётом модификаторов
+     * Calculates final damage after applying all modifiers
      *
-     * @param modifier модификатор урона
-     * @return финальный урон после всех модификаций
+     * @param modifier modifier to be applied
+     * @return final damage
      */
     public double calculate(DamageModifier modifier) {
-        // Если модификатор не применим, возвращаем базовый урон
         if (!modifier.shouldApplyModifier()) {
             return modifier.getBaseDamage();
         }
 
-        // Применяем множитель
         double rawDamage = modifier.getBaseDamage() * modifier.getMultiplier();
-
-        // Применяем округление
         double roundedDamage = applyRounding(rawDamage);
-
-        // Применяем правило минимального урона
         double finalDamage = applyMinimumDamage(roundedDamage);
 
         return finalDamage;
     }
 
-    /**
-     * Применяет округление согласно настройкам конфига
-     */
     private double applyRounding(double damage) {
         PluginConfig.RoundingMode mode = configManager.getConfig().getRoundingMode();
 
@@ -47,9 +38,6 @@ public class DamageCalculationService {
         };
     }
 
-    /**
-     * Применяет правило минимального урона согласно настройкам конфига
-     */
     private double applyMinimumDamage(double damage) {
         if (damage >= 1.0) {
             return damage;

@@ -8,34 +8,32 @@ import lombok.Getter;
 public class DamageModifier {
 
     /**
-     * Базовый урон до модификации
+     * Base damage before modification
      */
     private final double baseDamage;
 
     /**
-     * Категория моба-жертвы
+     * Category of the mob-victim
      */
     private final MobCategory mobCategory;
 
     /**
-     * Есть ли соответствующее зачарование на оружии
+     * Does the weapon have an enchantment?
      */
     private final boolean hasEnchantment;
 
     /**
-     * Множитель урона без зачарования
+     * Damage multiplier without enchantment
      */
     private final double noEnchantMultiplier;
 
     /**
-     * Множитель урона с зачарованием
+     * Damage multiplier with enchantment
      */
     private final double withEnchantMultiplier;
 
     /**
      * Получает применимый множитель урона
-     *
-     * @return множитель урона (0.70 или 1.30)
      */
     public double getMultiplier() {
         return hasEnchantment ? withEnchantMultiplier : noEnchantMultiplier;

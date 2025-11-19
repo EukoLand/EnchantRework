@@ -8,24 +8,17 @@ import org.bukkit.enchantments.Enchantment;
 @RequiredArgsConstructor
 public enum EnchantmentType {
 
-    /**
-     * Бич членистоногих - эффективен против пауков, пчёл и т.д.
-     */
     BANE_OF_ARTHROPODS(Enchantment.BANE_OF_ARTHROPODS, MobCategory.ARTHROPOD),
-
-    /**
-     * Небесная кара - эффективна против нежити
-     */
     SMITE(Enchantment.SMITE, MobCategory.UNDEAD);
 
     private final Enchantment bukkitEnchantment;
     private final MobCategory targetCategory;
 
     /**
-     * Находит тип зачарования по категории моба
+     * Founding enchantment type by mob category
      *
-     * @param category категория моба
-     * @return тип зачарования или null, если не найден
+     * @param category mob category
+     * @return type of enchantment or null
      */
     public static EnchantmentType findByCategory(MobCategory category) {
         for (EnchantmentType type : values()) {
