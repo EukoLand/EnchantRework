@@ -1,7 +1,7 @@
 name: EnchantmentRework
 main: land.euko.enchantrework.Main
 version: ${version}
-api-version: 1.18
+api-version: "1.21"
 author: euko
 folia-supported: true
 description: Reworking enchantment mechanics to increase gameplay difficulty

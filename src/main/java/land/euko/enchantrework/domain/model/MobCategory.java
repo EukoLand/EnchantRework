@@ -30,7 +30,10 @@ public enum MobCategory {
             EntityType.PHANTOM,
             EntityType.WITHER,
             EntityType.ZOGLIN,
-            EntityType.ZOMBIFIED_PIGLIN
+            EntityType.ZOMBIFIED_PIGLIN,
+            EntityType.ZOMBIE_HORSE,
+            EntityType.SKELETON_HORSE,
+            EntityType.BOGGED
     )),
 
     /**
