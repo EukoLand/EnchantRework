@@ -1,78 +1,78 @@
 # ═══════════════════════════════════════════════════════════════
-#  EnchantmentRework - Конфигурация
-#  Версия: 1.0 | Поддержка: 1.19+
+#  EnchantmentRework - Configuration
+#  Version: 1.0 | Support: 1.18+
 # ═══════════════════════════════════════════════════════════════
 
-# Включен ли плагин
-# true - плагин работает
-# false - плагин отключен, урон не модифицируется
+# Plugin enabled status
+# true - plugin is active
+# false - plugin is disabled, damage is not modified
 enabled: true
 
 # ═══════════════════════════════════════════════════════════════
-#  Режим обработки урона
+#  Damage Processing Mode
 # ═══════════════════════════════════════════════════════════════
 
-# Обрабатывать только урон от игроков
-# true - модификатор урона применяется только когда атакует игрок
-# false - модификатор применяется ко всем источникам урона (падение, лава и т.д.)
-#        ВНИМАНИЕ: режим false может сломать автоматические фермы мобов!
+# Process only damage dealt by players
+# true - damage modifier applies only when a player attacks
+# false - modifier applies to all damage sources (fall damage, lava, etc.)
+#         WARNING: false mode may break automatic mob farms!
 player-damage-only: true
 
 # ═══════════════════════════════════════════════════════════════
-#  Режим округления урона
+#  Damage Rounding Mode
 # ═══════════════════════════════════════════════════════════════
 
-# Как округлять итоговый урон:
-# STANDARD - стандартное округление (0.0-0.4 → вниз, 0.5-0.9 → вверх)
-#            Пример: 4.4 → 4, 4.5 → 5, 4.9 → 5
+# How to round final damage values:
+# STANDARD - standard rounding (0.0-0.4 → down, 0.5-0.9 → up)
+#            Example: 4.4 → 4, 4.5 → 5, 4.9 → 5
 #
-# ALWAYS_DOWN - всегда округлять вниз
-#               Пример: 4.1 → 4, 4.5 → 4, 4.9 → 4
+# ALWAYS_DOWN - always round down
+#               Example: 4.1 → 4, 4.5 → 4, 4.9 → 4
 #
-# ALWAYS_UP - всегда округлять вверх
-#             Пример: 4.1 → 5, 4.5 → 5, 4.9 → 5
+# ALWAYS_UP - always round up
+#             Example: 4.1 → 5, 4.5 → 5, 4.9 → 5
 #
 rounding-mode: STANDARD
 
 # ═══════════════════════════════════════════════════════════════
-#  Режим минимального урона
+#  Minimum Damage Mode
 # ═══════════════════════════════════════════════════════════════
 
-# Что делать, если урон после модификации меньше 1.0:
-# ZERO - наносить 0 урона (моб не получит урон)
-#        Пример: 0.7 урона → 0 урона
+# What to do when damage after modification is less than 1.0:
+# ZERO - deal 0 damage (mob takes no damage)
+#        Example: 0.7 damage → 0 damage
 #
-# MINIMUM - наносить минимум 1.0 урона (0.5 сердца)
-#           Пример: 0.7 урона → 1.0 урона
+# MINIMUM - deal minimum 1.0 damage (0.5 hearts)
+#           Example: 0.7 damage → 1.0 damage
 #
-# ALLOW_DECIMAL - разрешить дробный урон меньше 1.0
-#                 Пример: 0.7 урона → 0.7 урона
+# ALLOW_DECIMAL - allow decimal damage below 1.0
+#                 Example: 0.7 damage → 0.7 damage
 #
 minimum-damage-mode: MINIMUM
 
 # ═══════════════════════════════════════════════════════════════
-#  Множители урона
+#  Damage Multipliers
 # ═══════════════════════════════════════════════════════════════
 
-# Множители урона при отсутствии и наличии зачарования.
+# Damage multipliers for weapons with and without enchantments.
 #
-# Эти параметры позволяют гибко настраивать баланс:
+# These parameters allow flexible balance customization:
 #
-# no-enchant — уменьшение или увеличение урона,
-#              когда у оружия НЕТ подходящего зачарования.
+# no-enchant — damage reduction or increase
+#              when weapon has NO appropriate enchantment.
 #
-# with-enchant — множитель урона,
-#                когда зачарование ЕСТЬ (даже 1 уровень).
+# with-enchant — damage multiplier
+#                when enchantment IS present (even level 1).
 #
-# Примеры использования:
-#   0.50 -> урон уменьшится на 50%
-#   1.00 -> урон без изменений
-#   1.50 -> урон увеличится на 50%
-#   2.00 -> двойной урон
+# Usage examples:
+#   0.50 → damage reduced by 50%
+#   1.00 → damage unchanged
+#   1.50 → damage increased by 50%
+#   2.00 → double damage
 #
-# Стандартные значения:
-#   no-enchant: 0.70 — штраф 30%
-#   with-enchant: 1.30 — бонус 30%
+# Default values:
+#   no-enchant: 0.70 — 30% penalty
+#   with-enchant: 1.30 — 30% bonus
 #
 
 multiplier:
@@ -80,19 +80,20 @@ multiplier:
   with-enchant: 1.30
 
 # ═══════════════════════════════════════════════════════════════
-#  Информация о механике
+#  Mechanics Information
 # ═══════════════════════════════════════════════════════════════
 #
-# Без зачарования (Бич членистоногих / Небесная кара):
-#   - Урон по уязвимым мобам уменьшается на 30% (множитель 0.70)
+# Without enchantment (Bane of Arthropods / Smite):
+#   - Damage to vulnerable mobs is reduced by 30% (multiplier 0.70)
 #
-# С зачарованием (любой уровень):
-#   - Урон по уязвимым мобам увеличивается на 30% (множитель 1.30)
+# With enchantment (any level):
+#   - Damage to vulnerable mobs is increased by 30% (multiplier 1.30)
 #
-# Членистоногие мобы:
-#   - Пауки, пещерные пауки, пчёлы, чешуйницы, эндермиты
+# Affected enchantments:
+#   - Bane of Arthropods: spiders, cave spiders, bees, silverfish, endermites
+#   - Smite: zombies, skeletons, phantoms, wither, zoglins, and other undead
 #
-# Мобы нежити:
-#   - Зомби, скелеты, фантомы, иссушитель, зоглин и другие
+# This system encourages players to use specialized weapons for
+# specific mob types, adding strategic depth to combat.
 #
 # ═══════════════════════════════════════════════════════════════
