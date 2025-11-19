@@ -1,0 +1,20 @@
+name: EnchantmentRework
+main: land.euko.enchantrework.Main
+version: ${version}
+api-version: 1.18
+author: euko
+folia-supported: true
+description: Переработка механики зачарований для усложнения геймплея
+website: https://euko.land
+
+commands:
+  enchantrework:
+    description: Главная команда плагина
+    usage: /enchantrework reload
+    permission: enchantrework.reload
+    aliases: [er, enchrew]
+
+permissions:
+  enchantrework.reload:
+    description: Позволяет перезагружать конфигурацию плагина
+    default: op
